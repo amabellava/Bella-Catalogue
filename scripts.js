@@ -30,7 +30,7 @@ const CURB_POSTER_URL =
 const EAST_LOS_HIGH_POSTER_URL =
   "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
 
-<<<<<<< HEAD
+
 // This is an array of songs 
 let songs = [
   {
@@ -492,7 +492,6 @@ function openSongModal(song) {
   }
 
   document.getElementById("modal-overlay").classList.add("open");
-=======
 // This is an array of strings (TV show titles)
 let titles = [
   "Fresh Prince of Bel Air",
@@ -557,5 +556,4 @@ function quoteAlert() {
 function removeLastCard() {
   titles.pop(); // Remove last item in titles array
   showCards(); // Call showCards again to refresh
->>>>>>> a6cea92844384ae5e210fed812fabb858fe7235f
 }
