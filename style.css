@@ -1,0 +1,428 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* The Header */
+.main-header {
+  background-color: #000000;
+  border-bottom: 3px solid #FFFC00;
+  padding: 24px 40px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #FFFC00;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+/* yellow highlight on "YOU" */
+.title span {
+  color: #FFFC00;
+  -webkit-text-stroke: 1px #FFFC00;
+}
+/* Card Grid */
+#card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 30px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual cards that showcases the songs */
+.card {
+  background-color: #111111;
+  border: 1px solid #222222;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #FFFC00;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 12px 16px;
+}
+
+.card-content h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.card-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card-content li {
+  font-size: 0.78rem;
+  color: #888888;
+  margin-top: 3px;
+}
+
+.card-content li:first-child {
+  color: #FFFC00;
+  font-weight: 600;
+}
+/*  CONTROLS: the bar with search, filter and sort  */
+.controls {
+  display: flex;        /* puts everything in a row */
+  gap: 12px;            /* space between each control */
+  padding: 20px 40px;
+  background-color: #111111;
+  border-bottom: 1px solid #222222;
+  flex-wrap: wrap;      /* wraps to next line on small screens */
+  align-items: center;
+}
+
+/* styles for the search input and dropdowns */
+.controls input,
+.controls select {
+  background-color: #1a1a1a;  /* dark background */
+  border: 1px solid #333333;
+  border-radius: 8px;
+  color: #FFFFFF;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+}
+
+/* search bar is wider than the dropdowns */
+.controls input {
+  min-width: 250px;
+  flex: 1;   /* stretches to fill available space */
+}
+
+/* yellow border when user clicks on a control */
+.controls input:focus,
+.controls select:focus {
+  border-color: #FFFC00;
+}
+
+/* the Surprise Me button — yellow, bold, Snapchat style */
+.controls button {
+  background-color: #FFFC00;
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s;  /* smooth hover animation */
+}
+
+/* slight lift effect when hovering the button */
+.controls button:hover {
+  transform: translateY(-2px);
+}
+
+/* result count */
+#results-count {
+  color: #888888;
+  font-size: 0.8rem;
+  padding: 8px 40px 0px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* === FEATURED SECTION === */
+.featured-section {
+  padding: 30px 40px 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featured-title {
+  color: #FFFC00;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* wrapper holds arrows + scrollable row */
+.featured-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#featured-container {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  flex: 1;
+}
+
+/* left and right arrow buttons */
+.scroll-btn {
+  background: #FFFC00;
+  color: #000000;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s;
+  padding: 0;
+  line-height: 1;
+}
+
+.scroll-btn:hover {
+  transform: scale(1.1);
+}
+
+/* each featured card takes fixed width */
+.featured-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #333333;
+  transition: transform 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+  width: 300px;
+}
+
+.featured-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #333333;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.featured-card:hover {
+  transform: translateY(-4px);
+  border-color: #FFFC00;
+}
+
+.featured-card img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+}
+
+/* dark overlay on featured image */
+.featured-card .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  padding: 20px 16px 16px;
+}
+
+.featured-card .overlay h3 {
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.featured-card .overlay p {
+  color: #FFFC00;
+  font-size: 0.75rem;
+}
+
+.featured-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #FFFC00;
+  color: #000000;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+
+/* === SURPRISE ME MODAL === */
+#modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal-overlay.open {
+  display: flex;
+}
+
+.modal-box {
+  background: #111111;
+  border: 2px solid #FFFC00;
+  border-radius: 16px;
+  padding: 28px;
+  max-width: 320px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: #888888;
+  font-size: 1rem;
+  cursor: pointer;
+  height: auto;
+  padding: 0;
+}
+
+.modal-close:hover { color: #FFFFFF; }
+
+.modal-label {
+  font-size: 0.7rem;
+  color: #FFFC00;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#modal-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+#modal-content h2 {
+  color: #FFFFFF;
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+#modal-content .modal-artist {
+  color: #FFFC00;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+#modal-content .modal-meta {
+  color: #888888;
+  font-size: 0.75rem;
+}
+
+/* === SONG STATS IN MODAL === */
+.song-stats {
+  margin-top: 16px;
+  text-align: left;
+}
+
+.stat {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #888888;
+  width: 90px;
+  flex-shrink: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-bar {
+  flex: 1;
+  height: 4px;
+  background: #333333;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.stat-fill {
+  height: 100%;
+  background: #FFFC00;
+  border-radius: 2px;
+}
+
+.stat-value {
+  font-size: 0.7rem;
+  color: #FFFFFF;
+  width: 35px;
+  text-align: right;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* similar songs */
+.similar-section {
+  margin-top: 16px;
+  text-align: left;
+}
+
+.similar-title {
+  font-size: 0.7rem;
+  color: #FFFC00;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.similar-chip {
+  display: block;
+  font-size: 0.75rem;
+  color: #888888;
+  padding: 4px 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border-bottom: 1px solid #222222;
+}
+
+/* header hints */
+.header-hints {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding-bottom: 4px;
+}
+
+.header-hints span {
+  font-size: 0.72rem;
+  color: #888888;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.04em;
+}

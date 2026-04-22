@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- website title -->
+    <title>SOUNDCHECK | Music Discovery</title>
+    <meta name="description" content="Discover music by mood and vibe" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="scripts.js"></script>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="main-header">
+      <h1 class="title">NOW PLAYING: <span>YOU</span> 🎵</h1>
+      <div class="header-hints">
+        <span>🔍 search by song or artist</span>
+        <span>✨ filter by vibe or genre</span>
+        <span>📊 sort by popularity, energy or tempo</span>
+        <span>🎲 let us surprise you</span>
+        <span>👆 click any card for full stats</span>
+      </div>
+    </header>
+
+    <!-- CONTROLS: search, filter, sort buttons -->
+    <div class="controls">
+
+      <!-- search bar -->
+      <input type="text" id="search-input" placeholder="🔍 search songs or artists..." oninput="applyFilters()" />
+
+      <!-- filter by vibe -->
+      <select id="vibe-filter" onchange="applyFilters()">
+        <option value="All">✨ All Vibes</option>
+        <option value="Energetic">⚡ Energetic</option>
+        <option value="Feel-Good">😊 Feel-Good</option>
+        <option value="Melancholic">🌧 Melancholic</option>
+        <option value="Dreamy">🌙 Dreamy</option>
+        <option value="Bittersweet">🍂 Bittersweet</option>
+      </select>
+
+      <!-- filter by genre -->
+      <select id="genre-filter" onchange="applyFilters()">
+        <option value="All">🎸 All Genres</option>
+        <option value="Pop">Pop</option>
+        <option value="R&B">R&B</option>
+        <option value="Indie">Indie</option>
+        <option value="K-Pop">K-Pop</option>
+      </select>
+
+      <!-- sort options -->
+      <select id="sort-select" onchange="applyFilters()">
+        <option value="default">📊 Sort By</option>
+        <option value="popularity">🔥 Popularity</option>
+        <option value="energy">⚡ Energy</option>
+        <option value="tempo">🎵 Tempo (BPM)</option>
+      </select>
+
+      <!-- surprise me button -->
+      <button onclick="recommendSong()">🎲 Surprise Me!</button>
+
+    </div>
+
+    <!-- FEATURED: top 3 most popular songs -->
+    <div class="featured-section">
+      <h2 class="featured-title">🔥 Trending Right Now</h2>
+      <div class="featured-wrapper">
+        <!-- left arrow button -->
+        <button class="scroll-btn left" onclick="scrollFeatured(-1)">&#8249;</button>
+        <div id="featured-container"></div>
+        <!-- right arrow button -->
+        <button class="scroll-btn right" onclick="scrollFeatured(1)">&#8250;</button>
+      </div>
+    </div>
+
+    <!-- results count sits OUTSIDE the card container -->
+    <p id="results-count"></p>
+
+    <!-- CARD GRID: cards get added here by scripts.js -->
+    <div id="card-container"></div>
+
+    <!-- HIDDEN TEMPLATE CARD: used by scripts.js to clone -->
+    <div class="card" style="display: none">
+      <div class="card-content">
+        <h2>Song Title</h2>
+        <img src="" alt="Song Cover" />
+        <ul>
+          <li>Artist</li>
+          <li>Vibe</li>
+          <li>Popularity</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p style="color: #888; font-size: 0.75rem; font-family: Helvetica;">
+        made with 🎧 for snap engineering academy 2026
+      </p>
+    </div>
+
+    <!-- SURPRISE ME MODAL -->
+    <div id="modal-overlay" onclick="closeModal()">
+      <div class="modal-box" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <p class="modal-label">🎧 your next listen</p>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
